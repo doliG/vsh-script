@@ -1,0 +1,34 @@
+Salut donc, comme ce n'est pas évident, je te laisse y réfléchir en
+avance avec le jeune si il est dispo. merci beaucoup.
+
+Donc,
+
+Client met des photos dans la borne et veut 5 photos 10x15.
+
+La borne va donc récupérer les photos dans la clé et les mettre dans un
+dossier "tirages" par ex.
+
+Dans ce dossier voici l'architecture :
+
+tirages/000558 (numéro correspondant au client) / 152x102 (format 10x15)
+/ glossy (finition du papier brillant) / fill (ici se trouve les 5 jpg)
+
+dc tirages/000558/152x102/glossy/fill
+
+En gros, il faut que le batch sonde le dossier tirages, et à chaque fois
+qu'il y a un dossier nouveau, qu'il n'a pas traité par exemple, ou qu'il
+n'a pas save/déplacer, il rentre dans l'architecture, et si il voit
+152x102/glossy/fill il copie les jpg qui sont dans fill et les colle
+dans un dossier qui sera automatiquement reconnu par mon autre batch qui
+est relié à mon hotfolder.
+
+La principale difficulté est là. Après il faudra que le batch sauvegarde
+etc. mais ca c'est plus facile. Autre chose, de temps en temps, ce ne
+sera pas "glossy" mais "matte" et ce ne sera pas un dossier "fill" mais
+"fit" dans ce cas là il faudrait créer une manip par mouvement de souris
+pour les 2 cas via un autre logiciel (bien sûr la fenêtre sera toujours
+au même endroit) et l'action se ferait ainsi. mais ce serait plus rare.
+
+la plupart du temps ce sera du brillant (glossy) en "fill"
+
+Vous m'enlevez une aiguille du pied si vous y arrivez. 
