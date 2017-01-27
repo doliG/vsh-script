@@ -7,7 +7,9 @@ Le but est de créer un script pour automatiser l'impression des photos que les 
 - Focntionnement du script
 - Langages utilisés
 - Ressources
-
+ - Langages utilisés
+ - Liens utiles
+ - Commandes utiles
 
 ## Principe
 Le client passe à la borne. Il choisit les photos qu'il veut imprimer. Les photos sont copiées de son support vers le stockage de la borne, dans le chemin relatif suivant :
@@ -38,13 +40,24 @@ tirages/000558/152x102/glossy/fill
  - **Sinon**, copie de tous les fichiers `.jpg` dans `glossy/` vers `HOTFOLDER/`
 
 
-## Langages utilisés
+## Ressources
+
+### Langages utilisés
 Dans la mesure du possible, nous voudrions utiliser du `batch`.
 
 Cependant, il n'est pas possible de détecter lorsque un nouveau dossier est créé avec du batch. Il faut donc soit passer un script de detection en boucle qui cherche un dossier en fonction de sa **date de création** (possible en shell, à voir en batch), soit utiliser `powershell`.
 
 
-## Ressources
+### Liens utiles
 
 - [Search by date using command-line, Stackoverflow](http://stackoverflow.com/questions/9234207/search-by-date-using-command-line)
 - [Monitor a folder and trigger a command-line action when a file is created](http://superuser.com/questions/226828/how-to-monitor-a-folder-and-trigger-a-command-line-action-when-a-file-is-created)
+- [Batch - ouvrir deux fenêtres avec un seul script](https://openclassrooms.com/forum/sujet/batch-ouvrir-deux-fenetres-avec-un-seul-script-28126)
+
+
+### Commandes utiles
+
+Ouvrir un nouveau terminal dans un dossier spécifique :
+```batch
+start cmd /K "cd [PATH]"
+```
