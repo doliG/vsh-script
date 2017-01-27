@@ -1,6 +1,11 @@
 # Automatisation d'impressions
 Le but est de créer un script pour automatiser l'impression des photos que les clients laissent à la borne.
 
+**SOMMAIRE :**
+- Principe
+- Focntionnement du script
+- Langages utilisés
+
 ## Principe
 Le client passe à la borne. Il choisit les photos qu'il veut imprimer. Les photos sont copiées de son support vers le stockage de la borne, dans le chemin relatif suivant :
 ```
@@ -27,3 +32,8 @@ tirages/000558/152x102/glossy/fill
 4.
  - **Si** le dossier `glossy/` n'existe pas, arrêt script
  - **Sinon**, copie de tous les fichiers `.jpg` dans `glossy/` vers `HOTFOLDER/`
+
+## Langages utilisés
+Dans la mesure du possible, nous voudrions utiliser du `batch`.
+
+Cependant, il n'est pas possible de détecter lorsque un nouveau dossier est créé avec du batch. Il faut donc soit passer un script de detection en boucle qui cherche un dossier en fonction de sa **date de création** (possible en shell, à voir en batch), soit utiliser `powershell`.
