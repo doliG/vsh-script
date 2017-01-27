@@ -63,3 +63,8 @@ Ouvrir un nouveau terminal dans un dossier spécifique :
 ```batch
 start cmd /K "cd [PATH]"
 ```
+
+
+### Notes
+
+Idéalement, il faudrait que la fonction `isItId()` travaille avec les regex.
