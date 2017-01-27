@@ -53,6 +53,8 @@ Cependant, il n'est pas possible de détecter lorsque un nouveau dossier est cr�
 - [Search by date using command-line, Stackoverflow](http://stackoverflow.com/questions/9234207/search-by-date-using-command-line)
 - [Monitor a folder and trigger a command-line action when a file is created](http://superuser.com/questions/226828/how-to-monitor-a-folder-and-trigger-a-command-line-action-when-a-file-is-created)
 - [Batch - ouvrir deux fenêtres avec un seul script](https://openclassrooms.com/forum/sujet/batch-ouvrir-deux-fenetres-avec-un-seul-script-28126)
+- [shutil - lib py](https://docs.python.org/3.6/library/shutil.html#shutil.copy)
+- [stat - lib py](https://docs.python.org/3.6/library/stat.html) (pour savoir quand la copie est finie : `stat.S_ISREG(mode)`)
 
 
 ### Commandes utiles
