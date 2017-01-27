@@ -37,9 +37,11 @@ print """
 Your parameters :
 """
 
-print "PATH_TO_WATCH = " + PATH_TO_WATCH
-print "REFRESH = " + str(REFRESH)
-print "TIME_BETWEEN = " + str(TIME_BETWEEN)
+print "PATH_TO_WATCH   = " + PATH_TO_WATCH
+print "REFRESH         = " + str(REFRESH)
+print "TIME_BETWEEN    = " + str(TIME_BETWEEN)
+print "PHOTO_DIMENSION = " + PHOTO_DIMENSION
+print "PAPER_TYPE      = " + PAPER_TYPE
 print """
 ----------------------------
 """
