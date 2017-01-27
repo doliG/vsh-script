@@ -1,10 +1,13 @@
 # Automatisation d'impressions
+
 Le but est de créer un script pour automatiser l'impression des photos que les clients laissent à la borne.
 
 **SOMMAIRE :**
 - Principe
 - Focntionnement du script
 - Langages utilisés
+- Ressources
+
 
 ## Principe
 Le client passe à la borne. Il choisit les photos qu'il veut imprimer. Les photos sont copiées de son support vers le stockage de la borne, dans le chemin relatif suivant :
@@ -16,7 +19,7 @@ Avec :
 - formatPapier : int (une seule possibilité : 152*102)
 - finitionPapier : string
  - glossy (papier brillant, on imprime)
- - mat (**ne doit pas être traité**)
+ - mat (**autre traitement, à voir dans un second temps**)
 
 Voici un exemple de chemin :
 ```
@@ -24,6 +27,7 @@ tirages/000558/152x102/glossy/fill
 ```
 
 **IMPORTANT :** Nom exacte des dossiers `mat/` et `glossy/` à vérifier.
+
 
 ## Fonctionnement du script
 1. Scan régulier du dossier `tiarges/`
@@ -33,7 +37,14 @@ tirages/000558/152x102/glossy/fill
  - **Si** le dossier `glossy/` n'existe pas, arrêt script
  - **Sinon**, copie de tous les fichiers `.jpg` dans `glossy/` vers `HOTFOLDER/`
 
+
 ## Langages utilisés
 Dans la mesure du possible, nous voudrions utiliser du `batch`.
 
 Cependant, il n'est pas possible de détecter lorsque un nouveau dossier est créé avec du batch. Il faut donc soit passer un script de detection en boucle qui cherche un dossier en fonction de sa **date de création** (possible en shell, à voir en batch), soit utiliser `powershell`.
+
+
+## Ressources
+
+- [Search by date using command-line, Stackoverflow](http://stackoverflow.com/questions/9234207/search-by-date-using-command-line)
+- [Monitor a folder and trigger a command-line action when a file is created](http://superuser.com/questions/226828/how-to-monitor-a-folder-and-trigger-a-command-line-action-when-a-file-is-created)
