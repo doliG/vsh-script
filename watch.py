@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ##########
@@ -15,7 +16,7 @@ import time
 # --------------
 
 # Path to watch : this is where the script looks for new file/folder
-PATH_TO_WATCH = "/Users/guillaume/Documents/test-vsh"
+PATH_TO_WATCH = "./watch_folder"
 
 # Refresh every X seconds
 REFRESH = 1
@@ -31,20 +32,14 @@ PAPER_TYPE = "glossy"
 
 # REGEX ID client ? Todo #
 
-print """
---- WATCHER (in python) ---
+print("--- WATCHER (in python) ---\nYour parameters :")
 
-Your parameters :
-"""
-
-print "PATH_TO_WATCH   = " + PATH_TO_WATCH
-print "REFRESH         = " + str(REFRESH)
-print "TIME_BETWEEN    = " + str(TIME_BETWEEN)
-print "PHOTO_DIMENSION = " + PHOTO_DIMENSION
-print "PAPER_TYPE      = " + PAPER_TYPE
-print """
-----------------------------
-"""
+print("PATH_TO_WATCH   = {}".format(PATH_TO_WATCH))
+print("REFRESH         = {}".format(REFRESH))
+print("TIME_BETWEEN    = {}".format(TIME_BETWEEN))
+print("PHOTO_DIMENSION = {}".format(PHOTO_DIMENSION))
+print("PAPER_TYPE      = {}".format(PAPER_TYPE))
+print("""----------------------------""")
 
 
 
@@ -60,7 +55,7 @@ def watcher(PATH_TO_WATCH):
         time.sleep(REFRESH)
         after = os.listdir(PATH_TO_WATCH)
         if before != after:
-            print "Il y a du nouveau :"
+            print("Il y a du nouveau :")
             time.sleep(TIME_BETWEEN)
             new_files = []
             for afile in after:
@@ -92,17 +87,24 @@ def search_in_folder(searched_name, path):
     return 0
 
 
+def error_exit(action, *args):
+    if action == "INVALID_CID":
+        print("Error: new folder is not a valid client ID.")
+    elif action == "FOLDER_!EXISTS":
+        print("Error: folder '{}/' does not exist in '{}'/".format(*args))
+    print("Exiting...")
+    exit()
+
 
 ############
 #   MAIN   #
 ############
 new_files = watcher(PATH_TO_WATCH)
 
+
 # Test if new_files ok.
 if not is_it_id(new_files):
-    print "Error : !is_it_id(new_files)."
-    print "Exit."
-    quit()
+    error_exit("INVALID_CID")
 
 # Getting cliend_id
 cliend_id = new_files[0]
@@ -114,24 +116,18 @@ path_to_scan = PATH_TO_WATCH + "/" + cliend_id
 
 # Searching for PHOTO_DIMENSION in path_to_scan
 if not search_in_folder(PHOTO_DIMENSION, path_to_scan):
-    print "Error : folder '" + PHOTO_DIMENSION + "/' do not exist in " + \
-    path_to_scan + "/"
-    print "Exit."
-    quit()
+    error_exit("FOLDER_!EXISTS", PHOTO_DIMENSION, path_to_scan)
 
 # New path to scan
 path_to_scan = path_to_scan + "/" + PHOTO_DIMENSION
 
 # Searching for PAPER_TYPE in path_to_scan
 if not search_in_folder(PAPER_TYPE, path_to_scan):
-    print "Error : folder '" + PAPER_TYPE + "/' do not exist in " + \
-    path_to_scan + "/"
-    print "Exit."
-    quit()
+    error_exit("FOLDER_!EXISTS", PAPER_TYPE, path_to_scan)
 
 # New path to scan
 path_to_scan = path_to_scan + "/" + PAPER_TYPE
-print "Chemin définitif : " + path_to_scan
+print("Chemin définitif : {}".format(path_to_scan))
 
 
 
